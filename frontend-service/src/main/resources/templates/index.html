@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Register a product</h2>
+
+
+    <form action="#" th:action="@{/product/save}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label for="name">Product name:</label>
+            <input type="text" class="form-control" id="name" name="name" th:field="*{name}"/>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" class="form-control" id="price" name="price" th:field="*{price}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div class="container">
+    <h2>List of products </h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product name</th>
+            <th>Product price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product: ${products}">
+            <td><span th:text="${product.getId()}"></span></td>
+            <td><span th:text="${product.getName()}"></span></td>
+            <td><span th:text="${product.getPrice()}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
